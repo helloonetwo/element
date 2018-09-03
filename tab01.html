@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tab自定义</title>
+  
+      <!-- 引入样式 -->
+     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+  <div id="app">
+    <div style="margin-bottom: 20px;">
+        <el-button
+          size="small"
+          @click="addTab(editableTabsValue2)"
+        >
+          add tab
+        </el-button>
+      </div>
+      <el-tabs v-model="editableTabsValue2" type="card" closable @tab-remove="removeTab">
+        <el-tab-pane
+          v-for="(item, index) in editableTabs2"
+          :key="item.name"
+          :label="item.title"
+          :name="item.name"
+        >
+          {{item.content}}
+        </el-tab-pane>
+      </el-tabs>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+     var vm=new Vue({
+         el:"#app",
+         data() {
+             return {
+                editableTabsValue2: '2',
+                editableTabs2: [{
+                  title: 'Tab 1',
+                  name: '1',
+                   content: 'Tab 1 content'
+                  }, {
+                    title: 'Tab 2',
+                  name: '2',
+                 content: 'Tab 2 content'
+                 }],
+                    tabIndex: 2
+             }
+         },
+         methods:{
+        addTab(targetName) {
+        let newTabName = ++this.tabIndex + '';
+        this.editableTabs2.push({
+          title: 'New Tab',
+          name: newTabName,
+          content: 'New Tab content'
+        });
+        this.editableTabsValue2 = newTabName;
+      },
+      removeTab(targetName) {
+        let tabs = this.editableTabs2;
+        let activeName = this.editableTabsValue2;
+        if (activeName === targetName) {
+          tabs.forEach((tab, index) => {
+            if (tab.name === targetName) {
+              let nextTab = tabs[index + 1] || tabs[index - 1];
+              if (nextTab) {
+                activeName = nextTab.name;
+              }
+            }
+          });
+        }
+        
+        this.editableTabsValue2 = activeName;
+        this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
+           }
+         }
+     })
+</script>
+</html>
