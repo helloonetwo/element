@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Radio</title>
+  
+      <!-- 引入样式 -->
+     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+  <div id="app">
+    <template>  
+              <!--单一的checked 为布尔值 true or  false -->
+             <el-checkbox v-model="checked">   
+                选择
+             </el-checkbox>
+             <el-checkbox v-model="checked" disabled>   
+                    选择1
+            </el-checkbox>
+            <br>
+            <el-check-group  v-model="list">
+                    <el-checkbox label="选择1"></el-checkbox>
+                    <el-checkbox label="选择2"></el-checkbox>
+                    <el-checkbox label="选择3"></el-checkbox>
+            </el-check-group>
+             
+    </template>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+     var vm=new Vue({
+         el:"#app",
+         data() {
+             return {
+                checked:true,
+                list:['选择1'] 
+             }
+         }
+     })
+</script>
+</html>

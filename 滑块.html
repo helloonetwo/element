@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开关</title>
+  
+      <!-- 引入样式 -->
+     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+  <div id="app">
+       <span>默认</span>
+       <el-slider  v-model="value1"></el-slider>
+       <span>自定义</span>
+       <el-slider  v-model="value2"></el-slider>
+       <el-slider  v-model="value2"  :show-tooltip="false"></el-slider>
+       <el-slider  v-model="value3"  :show-tooltip="formatTooltip"></el-slider>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+     var vm=new Vue({
+         el:"#app",
+         data() {
+         return {
+               value1:0,
+               value2:50,
+               value3:50
+           }
+         },
+         methods:{
+            handlechange(val)   {
+                console.log(val);
+            } ,
+            formatTooltip(val) {
+               return  val/20;
+            }
+         }
+     })
+</script>
+</html>

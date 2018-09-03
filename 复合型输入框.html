@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Radio</title>
+  
+      <!-- 引入样式 -->
+     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+  <div id="app">
+    <template>  
+             <el-input  placeholder="请输入城市"  v-model="input">
+                  <template  slot="prepend">
+                        省
+                  </template>
+             </el-input>
+             <div style="margin-top: 15px;">
+                    <el-input placeholder="请输入内容" v-model="input4">
+                      <template slot="append">.com</template>
+                    </el-input>
+             </div>
+            
+              
+    </template>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+     var vm=new Vue({
+         el:"#app",
+         data() {
+             return {
+                textarea: ''
+             }
+         }
+     })
+</script>
+</html>

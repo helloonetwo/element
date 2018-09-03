@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>级联选择即改变</title>
+  
+      <!-- 引入样式 -->
+     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+  <div id="app">
+        <div class="block">
+            <el-cascader
+              :options="option"
+              @active-item-change="handleItemChange"
+              :props="props">
+            </el-cascader>
+          </div>
+    </template>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+     var vm=new Vue({
+         el:"#app",
+         data() {
+         return {
+              option:[{
+                  label:'江苏',
+                  cities:[]
+                 },{
+                   label:'广东',
+                   cities:[]
+               }],
+               props:{
+                   value:'label',
+                   children:'cities'
+               }
+             }
+         },
+         methods:{
+            handlechange(val)   {
+                console.log(val);
+            },
+            handleItemChange(val) {
+                console.log('active item:', val);
+        setTimeout(_ => {
+          if (val.indexOf('江苏') > -1 && !this.option[0].cities.length) {
+            this.option[0].cities = [{
+              label: '南京'
+            }];
+          } else if (val.indexOf('广东') > -1 && !this.option[1].cities.length) {
+            this.option[1].cities = [{
+              label: '广州'
+            }];
+          }
+        }, 300);
+            }
+         }
+     })
+</script>
+</html>

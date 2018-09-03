@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算器</title>
+  
+      <!-- 引入样式 -->
+     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+  <div id="app">
+    <template>  
+            <el-input-number controls-position="right" v-model="num" :precision="1" :step="3" :min="0"  :max="16"  @change="handlechange"  label="文字">
+
+            </el-input-number>
+    </template>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+     var vm=new Vue({
+         el:"#app",
+         data() {
+             return {
+                 num:1
+             }
+         },
+         methods:{
+            handlechange(val)   {
+                console.log(val);
+            } 
+         }
+     })
+</script>
+</html>
